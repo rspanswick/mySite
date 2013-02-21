@@ -1,0 +1,16 @@
+/*
+    Copyright 2013, Ryan Spanswick
+    Free to use under the MIT license.
+    http://www.opensource.org/licenses/mit-license.php
+    - Created by Ryan Spanswick
+    2013-02-21
+*/
+
+/* ==================================================
+    IE7 Specific Styles
+ ================================================= */
+
+    #mainWrap {border:1px solid #222;}
+    .resCon {padding-top:10px;}
+    #mainCon .sectionCon {cursor:default;}
+    .sliderCon h3 {margin-right:5px;}
