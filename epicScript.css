@@ -1,0 +1,181 @@
+/*
+    Copyright 2013, Ryan Spanswick
+    Free to use under the MIT license.
+    http://www.opensource.org/licenses/mit-license.php
+    - Created by Ryan Spanswick
+    2013-02-10
+*/
+
+/* ==================================================
+    Global Variables & Functions
+ ================================================= */
+  
+	var linkList = ["aboutMe", "experience", "skills", "education", "awards"]; //This array contains all of the section ID names and the identifying part of the hidden menu's CLASS name. The array is used to populate the identifying variable for both the click and targeting the menu.
+	var mobileVal = 1;
+	
+	function resetMenus() {
+		$(".sliderCon").css("display", "none");
+		$(".sliderCon").removeClass("open");
+		$(".for-aboutMe").css("display", "block");
+		$(".for-aboutMe").addClass("open");
+	}
+
+/* ==================================================
+    Footer - Set Current Year
+ ================================================= */
+
+    var newDate = new Date();
+    var newYear = newDate.getFullYear();
+    $("#thisYear").text(newYear);
+	
+/* ==================================================
+    Content - Mobile Slider Menu
+ ================================================= */
+
+	function mobileSlide() {
+		resetMenus();
+	    $.each(linkList, function () { //The $.each(); function is used to iterate through all of the array variables above
+	        $("#" + this).click(function() { //This click function targets the ID of the corresponding clicked object
+	            var menuClass = ("for-" + $(this).attr("id")); //The menuClass variable is converting the targeted ID into the hidden menu CLASS name that corresponds to it
+	            var menuOpen = ($("." + menuClass).attr("class")); //The menuOpen variable finds the entire CLASS string contained within the target CLASS
+	            function resetScroll() {
+	                $(".sliderCon").scrollTop(0);
+	            }
+		        
+	
+	            if (menuOpen === ("sliderCon " + menuClass + " open")) { //This if statement determines if the returned value of the entire CLASS string has the stacked class of "open" included. If it does it closes the corresponding menu. If it does not it  
+	                $(".open").slideToggle(500).removeClass("open");
+	                $(function() {
+	                    setTimeout(resetScroll, 480);
+	                });
+	            } else {
+	                $(".open").slideToggle(500).removeClass("open");
+	                $(".for-" + $(this).attr("id")).slideToggle(500).addClass("open");
+	                $(function() {
+	                    setTimeout(resetScroll, 480);
+	                });
+	            }
+	        });
+	    });
+	}
+	
+/* ==================================================
+    Content - Tablet Slider Menu
+ ================================================= */
+	
+	function tabletSlide() {
+        resetMenus();
+	    $.each(linkList, function () { //The $.each(); function is used to iterate through all of the array variables above
+	        $("#" + this).click(function() { //This click function targets the ID of the corresponding clicked object
+	            var menuClass = ("for-" + $(this).attr("id")); //The menuClass variable is converting the targeted ID into the hidden menu CLASS name that corresponds to it
+	            var menuOpen = ($("." + menuClass).attr("class")); //The menuOpen variable finds the entire CLASS string contained within the target CLASS
+	            function resetScroll() {
+	                $(".sliderCon").scrollLeft(0);
+	            }
+	
+	            if (menuOpen === ("sliderCon " + menuClass + " open")) { //This if statement determines if the returned value of the entire CLASS string has the stacked class of "open" included. If it does it closes the corresponding menu. If it does not it  
+	                $(".open").slideToggle(500).removeClass("open");
+	                $(function() {
+	                    setTimeout(resetScroll, 480);
+	                });
+	            } else {
+	                $(".open").slideToggle(500).removeClass("open");
+	                $(".for-" + $(this).attr("id")).slideToggle(500).addClass("open");
+	                $(function() {
+	                    setTimeout(resetScroll, 480);
+	                });
+	            }
+	        });
+	    });
+	} 
+
+/* ==================================================
+    Content - Desktop
+ ================================================= */
+
+	function wipeDesk () {
+        $(".sliderCon").css("display", "block");
+	}
+
+/* ==================================================
+    Responsive - jRespond
+ ================================================= */
+	var jRes = jRespond([
+		{
+			label: 'mobile',
+			enter: 0,
+			exit: 568
+		},{
+			label: 'tablet',
+			enter: 569,
+			exit: 979
+		},{
+			label: 'desktop',
+			enter: 980,
+			exit: 10000
+		}
+	]);
+	
+	jRes.addFunc({
+		breakpoint: 'mobile',
+		enter: function() {
+			mobileSlide();
+		},
+		exit: function() {
+			$('#mainWrap *').unbind();
+		}
+	});
+	jRes.addFunc({
+		breakpoint: 'tablet',
+		enter: function() {
+			tabletSlide();
+		},
+		exit: function() {
+			$('#mainWrap *').unbind();
+		}
+	});
+	jRes.addFunc({
+		breakpoint: 'desktop',
+		enter: function() {
+			wipeDesk();
+		},
+		exit: function() {
+			$('#mainWrap *').unbind();
+		}
+	});
+	
+/* ==================================================
+    Theme Switcher
+ =================================================
+	var lightSwitch = $('#lightSwitch');
+	var targetLink = $('#themeSwitch');
+	
+	$(lightSwitch).click(function() {
+	    if (targetLink.attr('href') == 'scripts/lightsOn.css'){
+	        targetLink.removeAttr('href');
+	        targetLink.attr('href', 'scripts/lightsOff.css')
+	        setCookie('lightsOff');
+	    } else {
+	        targetLink.removeAttr('href');
+	        targetLink.attr('href', 'scripts/lightsOn.css')
+	        setCookie('lightsOn');
+	    }
+	});
+	
+/* ==================================================
+    Cookie Control
+ ================================================= 
+	function setCookie(lightState){
+		var date = new Date();
+		date.setFullYear(date.getFullYear()+1);
+		document.cookie  = "theme="+lightState +"; expires="+ date +"; path=/;";
+	}
+	
+	checkCookie() //This function runs every time
+
+	function checkCookie(){
+		if(document.cookie){
+			var c = document.cookie.split('=');
+			targetLink.attr('href', ('scripts/' + c[1] + '.css'));
+		}
+	}*/
