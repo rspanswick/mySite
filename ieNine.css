@@ -1,0 +1,20 @@
+/*
+    Copyright 2013, Ryan Spanswick
+    Free to use under the MIT license.
+    http://www.opensource.org/licenses/mit-license.php
+    - Created by Ryan Spanswick
+    2013-02-21
+*/
+
+/* ==================================================
+    IE9 Specific Styles
+ ================================================= */
+
+    .sliderCon {box-shadow:none;}
+
+@media screen and (min-width:569px) and (max-width:979px) { /* Tablet */
+    .for-experience .blockSlider {width:2210px;}
+    .for-skills .blockSlider {width:1210px;}
+    .for-education .blockSlider {width:1010px;}
+    .for-awards .blockSlider {width:1090px;}
+}
