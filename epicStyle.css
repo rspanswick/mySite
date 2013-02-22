@@ -26,6 +26,7 @@
     #mainWrap {width:980px; margin:0 auto; text-align:left;}
     #headerCon, #mainCon, #footerCon {width:100%;}
     .oText {color:#ff8400;}
+    .resizeMe {display:none; position:fixed; right:0; bottom:0;}
     
     /* -- Header -- */
     #headerCon {position:relative; margin:0 auto; padding:10px 0; color:#fff; background:#1f1f1f; box-shadow:inset 0 0 2px #000;}
@@ -86,6 +87,7 @@
     #shawLogo {margin-top:20px; height:70px; background-position:0 -227px;}
     #fmiLogo {margin-top:20px; height:67px; background-position:0 -297px;}
     #footerCon p {margin:0 0 0 25px;}
+    .resizeMe {display:block;}
         
     .showDesktop, .showAboveMobile {display:initial;}
     .showTablet, .showMobile, .showBelowDesktop {display:none;}
